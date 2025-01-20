@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แอพคำนวณค่าไฟ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>คำนวณค่าไฟ</h1>
+        <label for="unit">ปริมาณไฟฟ้าที่ใช้ (หน่วย):</label>
+        <input type="number" id="unit" placeholder="กรอกจำนวนหน่วยไฟฟ้า">
+        <label for="rate">อัตราค่าไฟฟ้าต่อหน่วย (บาท):</label>
+        <input type="number" id="rate" placeholder="กรอกอัตราค่าไฟฟ้า">
+        <button onclick="calculateElectricity()">คำนวณ</button>
+        <h3>ผลลัพธ์: <span id="result">0.00</span> บาท</h3>
+    </div>
+    <script>
+        function calculateElectricity() {
+            const unit = parseFloat(document.getElementById('unit').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+
+            if (isNaN(unit) || isNaN(rate)) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return;
+            }
+
+            const total = unit * rate;
+            document.getElementById('result').innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
